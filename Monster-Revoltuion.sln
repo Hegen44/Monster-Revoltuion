@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monster-Revoltuion.CSharp", "Monster-Revoltuion.CSharp.csproj", "{ED658D2F-327C-F9AA-CC5B-165F0504D34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monster-Revoltuion.CSharp.Editor", "Monster-Revoltuion.CSharp.Editor.csproj", "{69E5F3BC-0A22-D43C-2082-07DABBE43738}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED658D2F-327C-F9AA-CC5B-165F0504D34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED658D2F-327C-F9AA-CC5B-165F0504D34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED658D2F-327C-F9AA-CC5B-165F0504D34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED658D2F-327C-F9AA-CC5B-165F0504D34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69E5F3BC-0A22-D43C-2082-07DABBE43738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69E5F3BC-0A22-D43C-2082-07DABBE43738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69E5F3BC-0A22-D43C-2082-07DABBE43738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69E5F3BC-0A22-D43C-2082-07DABBE43738}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
