@@ -24,7 +24,9 @@ public class ScreenFader : MonoBehaviour {
 
     public IEnumerator FadeToBlack()
     {
+        Debug.Log("testing");
         isFading = true;
+
         anim.SetTrigger("FadeOut");
 
         while (isFading)
@@ -37,6 +39,7 @@ public class ScreenFader : MonoBehaviour {
 
     // Update is called once per frame
     void AnimationComplete () {
+
         isFading = false;
 	
 	}
