@@ -62,8 +62,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\AttackMananger.cs" />
     <Compile Include="Assets\Script\CameraFollow.cs" />
-    <Compile Include="Assets\Script\PlayerMovement.cs" />
+    <Compile Include="Assets\Script\Grid.cs" />
+    <Compile Include="Assets\Script\HealthBarManager.cs" />
+    <Compile Include="Assets\Script\HealthMananger.cs" />
+    <Compile Include="Assets\Script\HeroController.cs" />
+    <Compile Include="Assets\Script\Node.cs" />
+    <Compile Include="Assets\Script\PathFinding.cs" />
+    <Compile Include="Assets\Script\PlayerController.cs" />
+    <Compile Include="Assets\Script\ScreenFader.cs" />
+    <Compile Include="Assets\Script\Warp.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\ImportBehaviour.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SortingLayerExposed.cs" />
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\SpriteDepthInMap.cs" />
@@ -72,7 +81,7 @@
     <Compile Include="Assets\Tiled2Unity\Scripts\Runtime\TiledMap.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Enviromnent\dungeon tileset calciumtrice instructions.txt" />
+    <None Include="Assets\Sprites\Enviromnent\dungeon tileset calciumtrice instructions.txt" />
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Imported\dungeon.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\forest.tiled2unity.xml" />

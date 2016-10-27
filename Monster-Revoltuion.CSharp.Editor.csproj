@@ -108,7 +108,7 @@
     <Compile Include="Assets\Tiled2Unity\Scripts\Editor\TiledAssetPostProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Enviromnent\dungeon tileset calciumtrice instructions.txt" />
+    <None Include="Assets\Sprites\Enviromnent\dungeon tileset calciumtrice instructions.txt" />
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Imported\dungeon.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\forest.tiled2unity.xml" />
