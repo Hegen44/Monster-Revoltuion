@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Grid : MonoBehaviour {
+
+    public bool displayGridGizmos;
+
     //public Transform target;
     public Vector2 gridWorldSize;
     public float nodeRadius;
@@ -21,6 +24,13 @@ public class Grid : MonoBehaviour {
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);
         CreateGrid();
     }
+
+    public int MaxSize {
+        get {
+            return gridSizeX * gridSizeY;
+        }
+    }
+
     // Create Grid
     void CreateGrid()
     {
@@ -69,19 +79,15 @@ public class Grid : MonoBehaviour {
         return grid[x, y];
     }
 
-    public List<Node> path;
     // draw grid, should be disable in game
-	void OnDrawGizmos()
-    {
+	void OnDrawGizmos(){
         Gizmos.DrawWireCube(transform.position,new Vector3(gridWorldSize.x, gridWorldSize.y,1));
         //Node targetNode = NodeFromWorldPoint(target.position);
-        if (grid != null)
-        {
-            foreach(Node n in grid){
-                Gizmos.color = (n.walkable) ? Color.white: Color.red;
+        if (grid != null && displayGridGizmos) {
+            foreach (Node n in grid) {
+                Gizmos.color = (n.walkable) ? Color.white : Color.red;
                 //if (targetNode == n) Gizmos.color = Color.blue;
-                if (path != null && path.Contains(n)) Gizmos.color = Color.blue;
-                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter-.1f));
+                Gizmos.DrawCube(n.worldPosition, Vector3.one * (nodeDiameter - .1f));
             }
         }
     }
