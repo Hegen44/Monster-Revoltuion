@@ -73,7 +73,7 @@
   <image source="Red.png" width="32" height="32"/>
   <tile id="0">
    <objectgroup draworder="index">
-    <object id="3" x="-0.00395258" y="-0.0434783" width="31.9961" height="32.0356"/>
+    <object id="6" x="0" y="0" width="32" height="32"/>
    </objectgroup>
   </tile>
  </tileset>
