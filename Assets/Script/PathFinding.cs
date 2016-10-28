@@ -57,7 +57,7 @@ public class PathFinding : MonoBehaviour {
                 }
 
                 foreach (Node neighbour in grid.GetNeighbours(currentNode)) {
-                    if (!neighbour.walkable || closedSet.Contains(neighbour)) {
+                    if (!neighbour.walkable || closedSet.Contains(neighbour) || !grid.CheckDiagonalWalkable(currentNode, neighbour)) {
                         continue;
                     }
 
@@ -98,6 +98,7 @@ public class PathFinding : MonoBehaviour {
 
     // only place waypoint when change direction
     Vector3[] SimplifyPath(List<Node> path) {
+
         List<Vector3> waypoints = new List<Vector3>();
         Vector2 directionOld = Vector2.zero;
         for (int i = 1; i < path.Count; ++i) {

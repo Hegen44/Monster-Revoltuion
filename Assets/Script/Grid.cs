@@ -16,7 +16,7 @@ public class Grid : MonoBehaviour {
     float nodeDiameter;
     int gridSizeX, gridSizeY;
 
-    void Start()
+    void Awake()
     {
         gridWorldPos = GetComponent<Transform>().position;
         nodeDiameter = nodeRadius * 2;
@@ -37,11 +37,12 @@ public class Grid : MonoBehaviour {
         grid = new Node[gridSizeX, gridSizeY];
         Vector3 worldBottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.up * gridWorldSize.y / 2; 
         for (int x = 0; x< gridSizeX; x++)
-        {
-            for(int y = 0; y < gridSizeY; y ++){
+        { 
+            for(int y = 0; y < gridSizeY; y ++)
+            {
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
                 bool walkable = !(Physics2D.OverlapArea(worldPoint, worldPoint + new Vector3(nodeRadius, nodeRadius,0), unwalkableMask));
-                grid[x, y] = new Node(walkable, worldPoint,x,y);
+                grid[x, y] = new Node(walkable, worldPoint, x, y);
             }
         }
     }
@@ -56,12 +57,26 @@ public class Grid : MonoBehaviour {
                 int checkX = node.gridX + x;
                 int checkY = node.gridY + y;
 
-                if(checkX >= 0 && checkX<gridSizeX && checkX >= 0 && checkY < gridSizeY) {
+                if(checkX >= 0 && checkX < gridSizeX && checkX >= 0 && checkY < gridSizeY) {
                     nighbours.Add(grid[checkX, checkY]);
                 }
             }
         }
         return nighbours;
+    }
+
+    public bool CheckDiagonalWalkable(Node currentNode, Node neighbourNode)
+    {
+        Vector2 movement_vector = new Vector2(neighbourNode.worldPosition.x - currentNode.worldPosition.x, neighbourNode.worldPosition.y - currentNode.worldPosition.y);
+        movement_vector.Normalize();
+        if (movement_vector.x != 0 && movement_vector.y != 0)
+        {
+            if (!grid[currentNode.gridX, neighbourNode.gridY].walkable || !grid[neighbourNode.gridX, currentNode.gridY].walkable)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     // Calculate target position in the world
