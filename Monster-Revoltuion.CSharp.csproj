@@ -150,6 +150,7 @@
     <Compile Include="Assets\Script\AstarAI.cs" />
     <Compile Include="Assets\Script\AttackMananger.cs" />
     <Compile Include="Assets\Script\CameraFollow.cs" />
+    <Compile Include="Assets\Script\FieldOfView.cs" />
     <Compile Include="Assets\Script\HealthBarManager.cs" />
     <Compile Include="Assets\Script\HealthMananger.cs" />
     <Compile Include="Assets\Script\HeroController.cs" />
