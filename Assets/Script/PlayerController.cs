@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     public float speed;
     Rigidbody2D rbody;
     Animator anim;
+    private bool isAttacking;
     //static bool playerExist;
 
     // Use this for initialization
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         Vector2 movement_vector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
         if (movement_vector != Vector2.zero)
@@ -40,5 +42,35 @@ public class PlayerController : MonoBehaviour {
         }
 
         rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime * speed);
+
+
+        HandleInput();
+        
+    }
+
+    void FixedUpdate()
+    {
+        HandleAttacks();
+    }
+
+    private void HandleInput()
+    {
+        if (Input.GetKeyDown("f"))
+        {
+            isAttacking = true;
+        }
+    }
+
+    void HandleAttacks()
+    {
+        if (isAttacking)
+        {
+            anim.SetTrigger("isAttack");
+        }
+    }
+
+    public void AttackFinish()
+    {
+        isAttacking = false;
     }
 }

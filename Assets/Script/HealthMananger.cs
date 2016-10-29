@@ -6,11 +6,13 @@ public class HealthMananger : MonoBehaviour
 
     public float MaxHealth;
     public float currentHealth;
+    Animator anim;
 
     // Use this for initialization
     void Start()
     {
         currentHealth = MaxHealth;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -18,7 +20,13 @@ public class HealthMananger : MonoBehaviour
     {
         if (currentHealth < 0)
         {
-            gameObject.SetActive(false);
+            anim.SetTrigger("isDead");
         }
+    }
+
+    public void HPDamage(float damage)
+    {
+        anim.SetTrigger("isHit");
+        currentHealth -= damage;
     }
 }
