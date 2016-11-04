@@ -4,14 +4,14 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     public float speed;
-    Rigidbody2D rbody;
+    Rigidbody rbody;
     Animator anim;
     private bool isAttacking;
     //static bool playerExist;
 
     // Use this for initialization
     void Start () {
-        rbody = GetComponent<Rigidbody2D>();
+        rbody = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
 
         /*
@@ -27,14 +27,14 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Vector2 movement_vector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector3 movement_vector = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-        if (movement_vector != Vector2.zero)
+        if (movement_vector != Vector3.zero)
         {
             anim.SetBool("isWalking", true);
             // set new direction
             anim.SetFloat("Input_x", movement_vector.x);
-            anim.SetFloat("Input_y", movement_vector.y);
+            anim.SetFloat("Input_y", movement_vector.z);
         }
         else
         {
