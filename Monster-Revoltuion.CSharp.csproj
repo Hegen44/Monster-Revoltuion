@@ -149,6 +149,7 @@
     <Compile Include="Assets\AstarPathfindingProject\changelog.cs" />
     <Compile Include="Assets\Script\AstarAI.cs" />
     <Compile Include="Assets\Script\AttackMananger.cs" />
+    <Compile Include="Assets\Script\Billboard.cs" />
     <Compile Include="Assets\Script\CameraFollow.cs" />
     <Compile Include="Assets\Script\FieldOfView.cs" />
     <Compile Include="Assets\Script\HealthBarManager.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="Assets\Script\Node.cs" />
     <Compile Include="Assets\Script\PlayerController.cs" />
     <Compile Include="Assets\Script\ScreenFader.cs" />
+    <Compile Include="Assets\Script\SlimAgentScript.cs" />
     <Compile Include="Assets\Script\Uselesspathfinding\Grid.cs" />
     <Compile Include="Assets\Script\Uselesspathfinding\Heap.cs" />
     <Compile Include="Assets\Script\Uselesspathfinding\PathFinding.cs" />

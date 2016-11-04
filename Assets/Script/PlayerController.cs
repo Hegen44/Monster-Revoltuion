@@ -41,7 +41,8 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("isWalking", false);
         }
 
-        rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime * speed);
+       // rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime * speed);
+        rbody.AddForce(movement_vector * Time.deltaTime * speed);
 
 
         HandleInput();

@@ -6,7 +6,7 @@ public class Warp : MonoBehaviour {
 	public Transform warpTarget;
     //public string levelToLoad;
 
-	IEnumerator OnTriggerEnter2D(Collider2D other){
+	IEnumerator OnTriggerEnter(Collider other){
 
         ScreenFader sf = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
 

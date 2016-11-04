@@ -22,7 +22,7 @@ public class CameraFollow : MonoBehaviour {
         if (target)
         {
             //transform.position = Vector3.Lerp(From, To, how fast);
-            transform.position = Vector3.Lerp(transform.position, target.position, smoothness) + new Vector3(0,10,0);
+            transform.position = Vector3.Lerp(transform.position, target.position + new Vector3(0, 10, 0), smoothness);
         }
 	}
 }
