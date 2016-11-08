@@ -155,6 +155,7 @@
     <Compile Include="Assets\Script\HealthBarManager.cs" />
     <Compile Include="Assets\Script\HealthMananger.cs" />
     <Compile Include="Assets\Script\HeroController.cs" />
+    <Compile Include="Assets\Script\ItemDatabase.cs" />
     <Compile Include="Assets\Script\Node.cs" />
     <Compile Include="Assets\Script\PlayerController.cs" />
     <Compile Include="Assets\Script\ScreenFader.cs" />
@@ -187,6 +188,8 @@
     <None Include="Assets\AstarPathfindingProject\Readme_upgrading.txt" />
     <None Include="Assets\AstarPathfindingProject\link.xml" />
     <None Include="Assets\Sprites\Enviromnent\dungeon tileset calciumtrice instructions.txt" />
+    <None Include="Assets\Sprites\Inventory\Spritesheet\uipack_rpg_sheet.xml" />
+    <None Include="Assets\Sprites\Inventory\license.txt" />
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Imported\dungeon.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\forest.tiled2unity.xml" />
