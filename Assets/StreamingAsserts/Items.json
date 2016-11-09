@@ -1,0 +1,32 @@
+[
+  {
+    "id": 0,
+    "title": "stick",
+    "value": 1,
+    "description": "It is a stick",
+    "slug": "icon_02",
+    "stackable":  true
+  },
+  {
+    "id": 1,
+    "title": "stone",
+    "value": 2,
+    "description": "A normal stone",
+    "slug": "icon_11",
+    "stackable":  true
+  },
+  {
+    "id": 0,
+    "title": "sword",
+    "value": 1,
+    "description": "One sword = many dead slime",
+    "slug": "icon_99",
+    "stackable":  true,
+    "state": {
+      "power": 1,
+      "defence": 1,
+      "vitality": 1
+    }
+  }
+
+]
