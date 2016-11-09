@@ -23,34 +23,79 @@ public class Inventory : MonoBehaviour {
         {
             items.Add(new Item());
             slots.Add(Instantiate(inventorySlot));
+            slots[i].GetComponent<Slot>().id = i; // set slot id
             slots[i].transform.SetParent(slotPanel.transform);
         }
+    }
 
-        AddItem(0);
-        AddItem(1);
-	}
+    void Update()
+    {
+        if (Input.GetKeyDown("k"))
+        {
+            AddItem(0);
+        }
+        if (Input.GetKeyDown("j"))
+        {
+            AddItem(1);
+        }
+    }
 
     public void AddItem(int id)
     {
         Item itemToAdd = database.FetchItemByID(id);
-
-        for (int i = 0; i < items.Count; ++i)
+        if (items.Contains(itemToAdd) && itemToAdd.Stackable)
         {
-            if (items[i].ID == -1)
+            ItemData data = slots[items.IndexOf(itemToAdd)].transform.GetChild(0).GetComponent<ItemData>();
+            data.amount++;
+            data.transform.GetChild(0).GetComponent<Text>().text = data.amount.ToString();
+        } else {
+            for (int i = 0; i < items.Count; ++i)
             {
-                items[i] = itemToAdd;
-                GameObject itemObj = Instantiate(inventoryItem);
-                itemObj.transform.SetParent(slots[i].transform);
-                itemObj.GetComponent<Image>().sprite = itemToAdd.image;
-                itemObj.transform.position = Vector2.zero;
-                itemObj.name = itemToAdd.Title;
-                break;
+
+                if (items[i].ID == -1)
+                {
+                    items[i] = itemToAdd;
+                    GameObject itemObj = Instantiate(inventoryItem);
+                    itemObj.GetComponent <ItemData>().item = itemToAdd;
+                    itemObj.GetComponent<ItemData>().slot = i;
+                    itemObj.GetComponent<ItemData>().amount = 1;
+                    itemObj.transform.SetParent(slots[i].transform);
+                    itemObj.GetComponent<Image>().sprite = itemToAdd.image;
+                    itemObj.transform.localPosition = Vector3.zero;
+                    Debug.Log(itemObj.transform.position);
+                    itemObj.name = itemToAdd.Title;
+                    break;
+                }
             }
         }
+
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    public void RemoveItem(int id)
+    {
+        Item itemToRemove = database.FetchItemByID(id);
+        if (items.Contains(itemToRemove) && itemToRemove.Stackable)
+        {
+            for (int j = 0; j < items.Count; j++) { if (items[j].ID == id)
+                { ItemData data = slots[j].transform.GetChild(0).GetComponent<ItemData>();
+                    data.amount--; data.transform.GetChild(0).GetComponent<Text>().text = data.amount.ToString();
+                    if (data.amount == 0) { Destroy(slots[j].transform.GetChild(0).gameObject);
+                        items[j] = new Item();
+                        break;
+                    } if (data.amount == 1) {
+                        slots[j].transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = "";
+                        break;
+                    }
+                    break;
+                }
+            }
+        }
+        else
+            for (int i = 0; i < items.Count; i++) if (items[i].ID != -1 && items[i].ID == id)
+                {
+                    Destroy(slots[i].transform.GetChild(0).gameObject); items[i] = new Item();
+                    break;
+                }
+    }
+
 }
