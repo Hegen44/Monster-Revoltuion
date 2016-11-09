@@ -22,5 +22,6 @@ public class GameManager : MonoBehaviour {
     void ToggleInventory()
     {
         inventory.SetActive(!inventory.activeInHierarchy);
+        Cursor.visible = inventory.activeInHierarchy;
     }
 }

@@ -23,10 +23,29 @@ public class PlayerController : MonoBehaviour {
         }
         */
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+        HandleInput();
+        HandleAttacks();
+    }
 
+    void FixedUpdate()
+    {
+        HandleMovement();
+    }
+
+    private void HandleInput()
+    {
+        if (Input.GetKeyDown("f"))
+        {
+            isAttacking = true;
+        }
+
+    }
+
+    void HandleMovement()
+    {
         Vector3 movement_vector = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
         if (movement_vector != Vector3.zero)
@@ -41,25 +60,8 @@ public class PlayerController : MonoBehaviour {
             anim.SetBool("isWalking", false);
         }
 
-       // rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime * speed);
+        // rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime * speed);
         rbody.AddForce(movement_vector * Time.deltaTime * speed);
-
-
-        HandleInput();
-        
-    }
-
-    void FixedUpdate()
-    {
-        HandleAttacks();
-    }
-
-    private void HandleInput()
-    {
-        if (Input.GetKeyDown("f"))
-        {
-            isAttacking = true;
-        }
     }
 
     void HandleAttacks()
