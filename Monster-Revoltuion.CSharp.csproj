@@ -163,7 +163,9 @@
     <Compile Include="Assets\Script\ItemData.cs" />
     <Compile Include="Assets\Script\ItemDatabase.cs" />
     <Compile Include="Assets\Script\Node.cs" />
+    <Compile Include="Assets\Script\PlayerAttack.cs" />
     <Compile Include="Assets\Script\PlayerController.cs" />
+    <Compile Include="Assets\Script\PlayerMobility.cs" />
     <Compile Include="Assets\Script\ScreenFader.cs" />
     <Compile Include="Assets\Script\SlimAgentScript.cs" />
     <Compile Include="Assets\Script\Slot.cs" />

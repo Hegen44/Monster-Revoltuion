@@ -37,9 +37,10 @@ public class Inventory : MonoBehaviour {
         }
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
     }
-
+    /*
     void Update()
     {
+        
         if (Input.GetKeyDown("k"))
         {
             AddItem(0);
@@ -48,8 +49,9 @@ public class Inventory : MonoBehaviour {
         {
             RemoveItem(0);
         }
+        
     }
-
+    */
     public void AddItem(int id)
     {
         Item itemToAdd = database.FetchItemByID(id);

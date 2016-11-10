@@ -25,24 +25,28 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	// Update is called once per frame
+    /*
 	void Update () {
         HandleInput();
-        HandleAttacks();
     }
-
+    */
     void FixedUpdate()
     {
         HandleMovement();
     }
-
+    /*
     private void HandleInput()
     {
-        if (Input.GetKeyDown("f"))
+        
+        if (Input.GetKeyDown("f") && !isAttacking)
         {
             isAttacking = true;
+            anim.SetTrigger("isAttack");
         }
+        
 
     }
+    */
 
     void HandleMovement()
     {
@@ -61,19 +65,13 @@ public class PlayerController : MonoBehaviour {
         }
 
         // rbody.MovePosition(rbody.position + movement_vector * Time.deltaTime * speed);
-        rbody.AddForce(movement_vector * Time.deltaTime * speed);
+        //rbody.AddForce(movement_vector * Time.deltaTime * speed);
+        rbody.AddForce(movement_vector * speed);
     }
-
-    void HandleAttacks()
-    {
-        if (isAttacking)
-        {
-            anim.SetTrigger("isAttack");
-        }
-    }
-
+    /*
     public void AttackFinish()
     {
         isAttacking = false;
     }
+    */
 }

@@ -1,26 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
-public class AttackMananger : MonoBehaviour {
+public class AttackMananger : MonoBehaviour
+{
 
     public float damage = 1f;
-    
-    void OnTriggerEnter2D(Collider other)
+    private bool isEnable = false;
+
+    void OnEnable()
     {
-        if (other.isTrigger != true && other.CompareTag("Resource"))
+        isEnable = true;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.isTrigger != true && other.CompareTag("Resource") && isEnable)
         {
             other.GetComponent<HealthMananger>().HPDamage(damage);
+            isEnable = false;
         }
-        /*
-        if (other.tag == "Enemies" || other.tag == "Hero")
-        {
-
-        } else if (other.tag == "player")
-        {
-
-        }
-        */
     }
-    
 }
 

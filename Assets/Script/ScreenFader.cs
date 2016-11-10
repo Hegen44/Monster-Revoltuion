@@ -24,7 +24,6 @@ public class ScreenFader : MonoBehaviour {
 
     public IEnumerator FadeToBlack()
     {
-        Debug.Log("testing");
         isFading = true;
 
         anim.SetTrigger("FadeOut");
