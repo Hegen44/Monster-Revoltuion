@@ -5,7 +5,7 @@ public class AttackMananger : MonoBehaviour {
 
     public float damage = 1f;
     
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider other)
     {
         if (other.isTrigger != true && other.CompareTag("Resource"))
         {

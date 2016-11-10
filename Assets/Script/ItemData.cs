@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 
-public class ItemData : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler{
+public class ItemData : MonoBehaviour {//, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IDragHandler, IEndDragHandler{
 
     public Item item;
     public int amount;
@@ -15,6 +15,7 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     {
         inv = GameObject.Find("Inventory").GetComponent<Inventory>();
     }
+    /*
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -56,4 +57,5 @@ public class ItemData : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         this.transform.SetParent(inv.slots[slot].transform);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
+    */
 }
