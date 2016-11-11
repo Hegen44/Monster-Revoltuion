@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour {
 
+
     Animator anim;
 
     void Start()
@@ -16,5 +17,6 @@ public class PlayerAttack : MonoBehaviour {
         {
             anim.SetTrigger("isAttack");
         }
+
     }
 }

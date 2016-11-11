@@ -37,21 +37,21 @@ public class Inventory : MonoBehaviour {
         }
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
     }
-    /*
+    
     void Update()
     {
-        
-        if (Input.GetKeyDown("k"))
-        {
-            AddItem(0);
-        }
         if (Input.GetKeyDown("j"))
         {
-            RemoveItem(0);
+            if (items.Contains(database.FetchItemByID(0)) && slots[items.IndexOf(database.FetchItemByID(0))].transform.GetChild(0).GetComponent<ItemData>().amount >1)
+            {
+                RemoveItem(0);
+                RemoveItem(0);
+                AddItem(1);
+            }
         }
         
     }
-    */
+    
     public void AddItem(int id)
     {
         Item itemToAdd = database.FetchItemByID(id);
