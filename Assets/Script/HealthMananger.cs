@@ -28,6 +28,5 @@ public class HealthMananger : MonoBehaviour
     {
         anim.SetTrigger("isHit");
         currentHealth -= damage;
-        Debug.Log("health: " + currentHealth);
     }
 }

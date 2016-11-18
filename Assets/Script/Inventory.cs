@@ -37,20 +37,17 @@ public class Inventory : MonoBehaviour {
         }
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
     }
-    
-    void Update()
+
+    public void CraftTrap()
     {
-        if (Input.GetKeyDown("j"))
-        {
-            if (items.Contains(database.FetchItemByID(0)) && slots[items.IndexOf(database.FetchItemByID(0))].transform.GetChild(0).GetComponent<ItemData>().amount >1)
-            {
-                RemoveItem(0);
-                RemoveItem(0);
-                AddItem(1);
-            }
-        }
-        
+       if (items.Contains(database.FetchItemByID(0)) && slots[items.IndexOf(database.FetchItemByID(0))].transform.GetChild(0).GetComponent<ItemData>().amount >= 2)
+       {
+           RemoveItem(0);
+           RemoveItem(0);
+           AddItem(1);
+       }
     }
+    
     
     public void AddItem(int id)
     {
