@@ -8,7 +8,7 @@ public class AttackMananger : MonoBehaviour
     public float damage = 1f;
     private bool isEnable = false;
     public int time = 0;
-    public string tag;
+    public string[] tag;
 
     void OnEnable()
     {
@@ -17,11 +17,15 @@ public class AttackMananger : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger != true && other.CompareTag(tag) && isEnable)
-        {
-            other.GetComponent<HealthMananger>().HPDamage(damage);
-            isEnable = false;
+        foreach (string subtag in tag){
+            if (other.isTrigger != true && other.CompareTag(subtag) && isEnable)
+            {
+                other.GetComponent<HealthMananger>().HPDamage(damage);
+                isEnable = false;
+            }
+
         }
+
     }
 
     

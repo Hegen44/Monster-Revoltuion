@@ -10,10 +10,12 @@ public class HeroController : MonoBehaviour {
     private List<Transform> points;
     private int destPoint = 0;
     private NavMeshAgent agent;
+    Animator anim;
 
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         points = new List<Transform>();
         print(Waypoints.transform.childCount);
         foreach (Transform child in Waypoints.transform)
@@ -38,7 +40,8 @@ public class HeroController : MonoBehaviour {
             return;
 
         // Set the agent to go to the currently selected destination.
-        agent.destination = points[destPoint].position;
+        //agent.destination = points[destPoint].position;
+        agent.SetDestination(points[destPoint].position);
 
         if (destPoint == 0)
         {
@@ -59,8 +62,20 @@ public class HeroController : MonoBehaviour {
 
     void Update()
     {
+        Vector3 vel = agent.velocity;
+        Vector3.Normalize(vel);
+        if (vel.magnitude != 0){
+            anim.SetBool("isWalking", true);
+            anim.SetFloat("Input_x", vel.x);
+            anim.SetFloat("Input_y", vel.z);
+        } else
+        {
+            anim.SetBool("isWalking", false);
+        }
+
         // Choose the next destination point when the agent gets
         // close to the current one.
+        
         if (agent.remainingDistance < 0.5f)
             GotoNextPoint();
     }

@@ -60,4 +60,9 @@ public class FieldOfView : MonoBehaviour
         }
         return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
+
+    public Transform GetTarget()
+    {
+        return visibleTargets.Count > 0? visibleTargets[0]: null; // get first target
+    }
 }
