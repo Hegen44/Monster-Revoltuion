@@ -6,18 +6,32 @@ public class HeroController : MonoBehaviour {
 
 
     //public Transform[] points;
-    public GameObject Waypoints;
+    //public GameObject Waypoints;
+    GameObject Waypoints;
+    public FieldOfView fov;
+    public float countdown;
+    public float TarDis;
+
     private List<Transform> points;
     private int destPoint = 0;
     private NavMeshAgent agent;
+
+    bool chasing = false;
+    bool attacked = false;
+    float novAngle;
+    float lastseemtime;
+    float lastunderattack;
     Animator anim;
+    Transform target;
+    Vector3 lastvaild;
 
 
     void Start()
     {
+        Waypoints = GameObject.FindGameObjectWithTag("waypoint");
+        novAngle = fov.viewAngle;
         anim = GetComponent<Animator>();
         points = new List<Transform>();
-        print(Waypoints.transform.childCount);
         foreach (Transform child in Waypoints.transform)
         {
             points.Add(child);
@@ -62,21 +76,95 @@ public class HeroController : MonoBehaviour {
 
     void Update()
     {
+        // check if there is a target
+        handlefovcountdown();
+        targethandeling();
+        HandleWalkingAnimation();
+        attackhandeling();
+
+
+    }
+
+    void attackhandeling()
+    {
+        if(chasing && target != null && agent.remainingDistance < TarDis)
+        {
+            Vector3 vel = target.position - transform.position;
+            anim.SetFloat("Input_x", vel.x);
+            anim.SetFloat("Input_y", vel.z);
+            anim.SetTrigger("isAttack");
+        }
+    }
+
+    void targethandeling()
+    {
+        target = fov.GetTarget();
+        if (target != null)
+        {
+            print("chasing");
+            agent.SetDestination(target.position);
+            lastseemtime = Time.time;
+            chasing = true;
+            lastvaild = target.position;
+
+        }
+        else if (target == null && chasing)
+        {
+            agent.SetDestination(lastvaild);
+            if (agent.remainingDistance < 0.5f)
+                GotoNextPoint();
+            print("chasing blind");
+            if (Time.time - lastseemtime > countdown)
+            {
+                print("give up");
+                agent.Stop();
+                agent.ResetPath();
+                chasing = false;
+            }
+
+        }
+        else
+        {
+            // Choose the next destination point when the agent gets
+            // close to the current one.
+            if (agent.remainingDistance < 0.5f)
+                GotoNextPoint();
+        }
+    }
+
+
+    void HandleWalkingAnimation()
+    {
         Vector3 vel = agent.velocity;
         Vector3.Normalize(vel);
-        if (vel.magnitude != 0){
+        if (vel.magnitude != 0)
+        {
             anim.SetBool("isWalking", true);
             anim.SetFloat("Input_x", vel.x);
             anim.SetFloat("Input_y", vel.z);
-        } else
+        }
+        else
         {
             anim.SetBool("isWalking", false);
         }
 
-        // Choose the next destination point when the agent gets
-        // close to the current one.
-        
-        if (agent.remainingDistance < 0.5f)
-            GotoNextPoint();
+ 
+    }
+
+    public void HitAlert()
+    {
+        agent.Stop();
+        agent.ResetPath();
+        fov.viewAngle = 360;
+        attacked = true;
+        lastunderattack = Time.time; ;
+    }
+
+    void handlefovcountdown()
+    {
+        if (attacked && Time.time - lastunderattack > countdown)
+        {
+            fov.viewAngle = novAngle;
+        }
     }
 }

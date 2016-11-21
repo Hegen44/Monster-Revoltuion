@@ -29,4 +29,9 @@ public class HealthMananger : MonoBehaviour
         anim.SetTrigger("isHit");
         currentHealth -= damage;
     }
+
+    public void kill()
+    {
+        Destroy(this.gameObject);
+    }
 }

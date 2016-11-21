@@ -4,6 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
     public GameObject inventory;
+    GameObject Hero;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +16,14 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleInventory();
+        }
+
+        if(GameObject.FindGameObjectWithTag("Hero") == null)
+        {
+            GameObject.FindGameObjectWithTag("Arrow").GetComponent<SpriteRenderer>().enabled = false;
+        } else
+        {
+            GameObject.FindGameObjectWithTag("Arrow").GetComponent<SpriteRenderer>().enabled = true;
         }
 	
 	}
