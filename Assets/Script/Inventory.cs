@@ -40,8 +40,10 @@ public class Inventory : MonoBehaviour {
 
     public void CraftTrap()
     {
-       if (items.Contains(database.FetchItemByID(0)) && slots[items.IndexOf(database.FetchItemByID(0))].transform.GetChild(0).GetComponent<ItemData>().amount >= 2)
+       if (items.Contains(database.FetchItemByID(0)) && slots[items.IndexOf(database.FetchItemByID(0))].transform.GetChild(0).GetComponent<ItemData>().amount >= 4)
        {
+           RemoveItem(0);
+           RemoveItem(0);
            RemoveItem(0);
            RemoveItem(0);
            AddItem(1);

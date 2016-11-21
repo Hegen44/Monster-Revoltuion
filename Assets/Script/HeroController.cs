@@ -11,6 +11,7 @@ public class HeroController : MonoBehaviour {
     public FieldOfView fov;
     public float countdown;
     public float TarDis;
+    public float sprSpeed = 2.1f;
 
     private List<Transform> points;
     private int destPoint = 0;
@@ -18,6 +19,7 @@ public class HeroController : MonoBehaviour {
 
     bool chasing = false;
     bool attacked = false;
+    float novSpeed;
     float novAngle;
     float lastseemtime;
     float lastunderattack;
@@ -30,13 +32,14 @@ public class HeroController : MonoBehaviour {
     {
         Waypoints = GameObject.FindGameObjectWithTag("waypoint");
         novAngle = fov.viewAngle;
+        agent = GetComponent<NavMeshAgent>();
+        novSpeed = agent.speed;
         anim = GetComponent<Animator>();
         points = new List<Transform>();
         foreach (Transform child in Waypoints.transform)
         {
             points.Add(child);
         }
-        agent = GetComponent<NavMeshAgent>();
 
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
@@ -79,6 +82,7 @@ public class HeroController : MonoBehaviour {
         // check if there is a target
         handlefovcountdown();
         targethandeling();
+        controlSpeed();
         HandleWalkingAnimation();
         attackhandeling();
 
@@ -149,6 +153,17 @@ public class HeroController : MonoBehaviour {
         }
 
  
+    }
+
+    void controlSpeed()
+    {
+        if (chasing)
+        {
+            agent.speed = sprSpeed;
+        } else
+        {
+            agent.speed = novSpeed;
+        }
     }
 
     public void HitAlert()

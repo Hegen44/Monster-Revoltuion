@@ -30,4 +30,9 @@ public class SpawnHero : MonoBehaviour {
         Hero.transform.position = spawnPoints.position;
         Destroy(this.gameObject);
     }
+    
+    public int getCountDown()
+    {
+        return (int)(secondBeforeHeroSpawn - (Time.time - start));
+    }
 }
