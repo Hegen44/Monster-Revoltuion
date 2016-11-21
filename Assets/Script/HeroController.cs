@@ -101,7 +101,7 @@ public class HeroController : MonoBehaviour {
         target = fov.GetTarget();
         if (target != null)
         {
-            print("chasing");
+            //print("chasing");
             agent.SetDestination(target.position);
             lastseemtime = Time.time;
             chasing = true;
@@ -113,10 +113,10 @@ public class HeroController : MonoBehaviour {
             agent.SetDestination(lastvaild);
             if (agent.remainingDistance < 0.5f)
                 GotoNextPoint();
-            print("chasing blind");
+            //print("chasing blind");
             if (Time.time - lastseemtime > countdown)
             {
-                print("give up");
+                //print("give up");
                 agent.Stop();
                 agent.ResetPath();
                 chasing = false;
